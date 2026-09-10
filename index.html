@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" data-page-node-id="edjCtRmsId6eVVFOTAqkxR">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" data-page-node-id="AQSiXINyZ8V81zWR0pFOHM">
 <meta name="theme-color" content="#0A1F3A" data-page-node-id="jMIcXeUJEEfzT0my8BjDCn">
-<title>发展对象理论测试 · 学习工具 v3</title>
+<title>发展对象理论测试 · 学习工具</title>
 <style>
 :root{--navy:#0A1F3A;--navy2:#123257;--gold:#D4AF37;--gold2:#F0D070;--bg:#F4F6FA;--card:#fff;--txt:#1b2733;--sub:#6b7a8d;--line:#e6ebf2;--ok:#1a9c5b;--bad:#d84a4a;--brand:#0A1F3A}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -118,6 +118,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .adm th{color:var(--sub);font-weight:600;font-size:12px}
 .adm td.r{text-align:right;color:var(--navy);font-weight:600}
 .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.foot{text-align:center;font-size:11px;color:#a3aebd;padding:14px 0 2px;line-height:1.6}
+.foot .dotv{display:inline-block;width:5px;height:5px;border-radius:50%;background:#c9d2dd;margin:0 6px;vertical-align:middle}
 
 </style>
 </head>
@@ -125,7 +127,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 <div id="app" data-page-node-id="SUgMTpG9tZuStgvDPJbD7v">
   <div class="hdr" data-page-node-id="4EAnCvvPu4YOZCjVE4rHOl">
     <h1 data-page-node-id="tNmyxqsx4PmzmTFmSklikR"><span class="dot" data-page-node-id="BcnHEGApTdiyGHCyXMmH3a"></span>发展对象理论测试 · 学习工具</h1>
-    <div class="sub" id="hdrSub" data-page-node-id="OWJVY5e4tZbDRXUdhtB0FZ">共 0 题 · 2026 版 · v3</div>
+    <div class="sub" id="hdrSub" data-page-node-id="OWJVY5e4tZbDRXUdhtB0FZ">共 0 题 · 2026 版</div>
     <div class="bar" id="hdrBar" style="display:none" data-page-node-id="DG6Z7HjPZNlxAUDcltWbWM"><i id="barFill" data-page-node-id="ajdnegHMHW8oo7kOWF1jGN"></i></div>
     <div class="barlab" id="hdrBarLab" style="display:none" data-page-node-id="2vBrPtEE7wRVHJOe1bdY4a"><span id="barProg" data-page-node-id="oOojZhlz437zifWe7FHPw3">0/0</span><span id="barScore" data-page-node-id="10Zwer5ns4WcE3CzyDTzjq">正确率 --</span></div>
   </div>
@@ -152,6 +154,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
     </div>
     <!-- QUIZ / EXAM / BROWSE single container -->
     <div class="screen" id="s-quiz" data-page-node-id="cIyGHXLKJyTYC3xV2ib2r9"><div id="quizHost" data-page-node-id="qfQ6jRdtF96qnuEIPhL7sX"></div></div>
+  </div>
+  <div class="foot" id="footVer">版本 v3.2</div>
   </div>
   <div class="tabbar" id="tabbar" data-page-node-id="DM0fgdaDFgsdlA870p2N12">
     <div class="tab on" data-s="home" onclick="go('home')" data-page-node-id="nde2CnhGGZxViYFTglvD85"><span class="ti" data-page-node-id="8TU7JiH85d43BFi1Yv4K34">🏠</span>首页</div>
@@ -226,7 +230,7 @@ function toggleStar(id){
 }
 
 function renderHome(){
-  $('#hdrSub').textContent='共 '+DATA.length+' 题 · 2026 版 · v2';
+  $('#hdrSub').textContent='共 '+DATA.length+' 题 · 2026 版';
   $('#stDone').textContent=Object.keys(S.done).length;
   $('#stAcc').textContent=S.answered?Math.round(S.correct/S.answered*100)+'%':'--';
   $('#stWrong').textContent=Object.keys(S.wrong).length;
@@ -240,6 +244,7 @@ function renderHome(){
   $('#homeChips').innerHTML=['judge','single','multi','fill','qa'].map(t=>
     '<span class="chip" onclick="startQuizType(\''+t+'\')">'+TYPENAME[t]+' · '+cnt[t]+'</span>').join('');
   renderAcct();
+  var fv=document.getElementById('footVer');if(fv)fv.innerHTML='版本 v3.2<span class="dotv"></span>题库 '+DATA.length+' 题<span class="dotv"></span>2026 版';
 }
 function startQuizType(t){const q=DATA.filter(d=>d.type===t);if(!q.length)return;beginPractice(q,TYPENAME[t]+'专项');}
 function startQuiz(kind){

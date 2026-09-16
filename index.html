@@ -43,6 +43,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .tile .n{position:absolute;top:12px;right:14px;font-size:12px;color:var(--gold);font-weight:700}
 /* filter chips */
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;-webkit-overflow-scrolling:touch}
+/* 首页题型行改为换行显示：专项入口与「非考纲」开关不再藏在横向滚动区右侧 */
+#homeChips{flex-wrap:wrap;overflow-x:visible;row-gap:8px;padding-bottom:4px}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;padding:7px 14px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:13px;color:var(--sub);cursor:pointer;white-space:nowrap}
 .chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
@@ -166,7 +168,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
     <!-- QUIZ / EXAM / BROWSE single container -->
     <div class="screen" id="s-quiz" data-page-node-id="cIyGHXLKJyTYC3xV2ib2r9"><div id="quizHost" data-page-node-id="qfQ6jRdtF96qnuEIPhL7sX"></div></div>
   </div>
-  <div class="foot" id="footVer">版本 v6.6</div>
+  <div class="foot" id="footVer">版本 v6.7</div>
   </div>
   <div class="tabbar" id="tabbar" data-page-node-id="DM0fgdaDFgsdlA870p2N12">
     <div class="tab on" data-s="home" onclick="go('home')" data-page-node-id="nde2CnhGGZxViYFTglvD85"><span class="ti" data-page-node-id="8TU7JiH85d43BFi1Yv4K34">🏠</span>首页</div>
@@ -288,7 +290,7 @@ function renderHome(){
   var _on=document.getElementById('outN');if(_on)_on.textContent=OUTCNT;
   var _kn=document.getElementById('kcN');if(_kn)_kn.textContent=KCCNT;
   renderAcct();
-  var fv=document.getElementById('footVer');if(fv)fv.innerHTML='版本 v6.6<span class="dotv"></span>题库 '+DATA.length+' 题<span class="dotv"></span>非考纲 '+OUTCNT+' 题<span class="dotv"></span>2026 版';
+  var fv=document.getElementById('footVer');if(fv)fv.innerHTML='版本 v6.7<span class="dotv"></span>题库 '+DATA.length+' 题<span class="dotv"></span>非考纲 '+OUTCNT+' 题<span class="dotv"></span>2026 版';
 }
 function startQuizType(t){const q=DATA.filter(d=>d.type===t);if(!q.length)return;beginPractice(q,TYPENAME[t]+'专项');}
 function startQuiz(kind){
@@ -664,7 +666,7 @@ renderHome();
 
 /* 旧缓存自检：若页面内版本落后于服务器版本，提示用户刷新一次 */
 (function(){
-  var CUR='6.6';
+  var CUR='6.7';
   function tip(){
     var d=document.createElement('div');
     d.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0A1F3A;color:#fff;padding:12px 14px;font-size:13px;text-align:center;line-height:1.5;box-shadow:0 -2px 12px rgba(0,0,0,.18)';
